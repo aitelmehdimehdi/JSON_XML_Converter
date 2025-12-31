@@ -1,0 +1,294 @@
+/* ===== ROOT STYLES ===== */
+.root {
+    -fx-font-family: 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+    -fx-background-color: #f5f7fa;
+}
+
+/* ===== TOOLBAR BUTTONS ===== */
+.toolbar-button {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 8 15;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 3, 0, 1, 1);
+    -fx-transition: all 0.2s;
+}
+
+.toolbar-button.primary {
+    -fx-background-color: linear-gradient(to bottom, #3498db, #2980b9);
+    -fx-text-fill: white;
+}
+
+.toolbar-button.convert {
+    -fx-background-color: linear-gradient(to bottom, #9b59b6, #8e44ad);
+    -fx-text-fill: white;
+}
+
+.toolbar-button.save {
+    -fx-background-color: linear-gradient(to bottom, #27ae60, #229954);
+    -fx-text-fill: white;
+}
+
+.toolbar-button.format {
+    -fx-background-color: linear-gradient(to bottom, #1abc9c, #16a085);
+    -fx-text-fill: white;
+}
+
+.toolbar-button.validate {
+    -fx-background-color: linear-gradient(to bottom, #f39c12, #d68910);
+    -fx-text-fill: white;
+}
+
+.toolbar-button.danger {
+    -fx-background-color: linear-gradient(to bottom, #e74c3c, #c0392b);
+    -fx-text-fill: white;
+}
+
+.toolbar-button:hover {
+    -fx-translate-y: -1px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 2, 2);
+}
+
+.toolbar-button:pressed {
+    -fx-translate-y: 0;
+}
+
+/* ===== CODE EDITORS ===== */
+.code-editor {
+    -fx-font-family: 'Cascadia Code', 'Consolas', 'Monaco', 'JetBrains Mono', monospace;
+    -fx-font-size: 13px;
+    -fx-control-inner-background: #2c3e50;
+    -fx-text-fill: #ecf0f1;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 2, 4);
+}
+
+.code-editor .content {
+    -fx-background-color: transparent;
+}
+
+.code-editor .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.code-editor .scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.code-editor .scroll-pane .content {
+    -fx-background-color: transparent;
+}
+
+.json-editor:focused {
+    -fx-border-color: #e74c3c;
+    -fx-border-width: 2;
+}
+
+.xml-editor:focused {
+    -fx-border-color: #3498db;
+    -fx-border-width: 2;
+}
+
+/* ===== SMALL BUTTONS ===== */
+.small-button {
+    -fx-font-size: 12px;
+    -fx-padding: 4 10;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-background-color: #95a5a6;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+
+.small-button.danger {
+    -fx-background-color: #e74c3c;
+}
+
+.small-button:hover {
+    -fx-background-color: derive(#95a5a6, 20%);
+}
+
+.small-button.danger:hover {
+    -fx-background-color: derive(#e74c3c, 20%);
+}
+
+/* ===== ICON BUTTONS ===== */
+.icon-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #bdc3c7;
+    -fx-cursor: hand;
+    -fx-padding: 5;
+}
+
+.icon-button:hover {
+    -fx-text-fill: white;
+    -fx-background-color: rgba(255,255,255,0.1);
+    -fx-background-radius: 4;
+}
+
+.icon-button.danger:hover {
+    -fx-text-fill: #e74c3c;
+}
+
+/* ===== STATUS LABELS ===== */
+.status-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #7f8c8d;
+    -fx-font-style: italic;
+}
+
+.char-count {
+    -fx-font-size: 11px;
+    -fx-text-fill: #95a5a6;
+    -fx-padding: 2 5;
+    -fx-background-color: rgba(236, 240, 241, 0.2);
+    -fx-background-radius: 3;
+}
+
+.line-count {
+    -fx-font-size: 11px;
+    -fx-text-fill: #95a5a6;
+    -fx-padding: 2 5;
+    -fx-background-color: rgba(236, 240, 241, 0.2);
+    -fx-background-radius: 3;
+}
+
+/* ===== SCROLLBAR STYLING ===== */
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical {
+    -fx-pref-width: 14;
+}
+
+.scroll-bar:horizontal {
+    -fx-pref-height: 14;
+}
+
+.scroll-bar .track {
+    -fx-background-color: #34495e;
+    -fx-background-radius: 7;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: linear-gradient(to bottom, #3498db, #2980b9);
+    -fx-background-radius: 7;
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,0.3), 4, 0, 1, 1);
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: linear-gradient(to bottom, #3cb0fd, #3498db);
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 2;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-background-color: #bdc3c7;
+    -fx-padding: 3;
+    -fx-shape: "M 0 0 L 4 4 L 8 0 Z";
+}
+
+/* ===== CHOICE BOX STYLING ===== */
+.choice-box {
+    -fx-background-color: #34495e;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 4;
+    -fx-mark-color: #3498db;
+    -fx-text-fill: white;
+}
+
+.choice-box .context-menu {
+    -fx-background-color: #2c3e50;
+    -fx-border-color: #bdc3c7;
+}
+
+.choice-box .menu-item:focused {
+    -fx-background-color: #3498db;
+}
+
+.choice-box .menu-item > .label {
+    -fx-text-fill: white;
+}
+
+/* ===== PROGRESS BAR STYLING ===== */
+.progress-bar {
+    -fx-accent: #1abc9c;
+}
+
+.progress-bar .track {
+    -fx-background-color: #34495e;
+    -fx-background-radius: 3;
+}
+
+.progress-bar .bar {
+    -fx-background-color: linear-gradient(to right, #1abc9c, #16a085);
+    -fx-background-radius: 3;
+    -fx-padding: 2;
+}
+
+/* ===== CONTEXT MENU STYLING ===== */
+.context-menu {
+    -fx-background-color: #2c3e50;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 6;
+    -fx-padding: 5;
+}
+
+.menu-item {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-padding: 5 10;
+}
+
+.menu-item:focused {
+    -fx-background-color: #3498db;
+    -fx-background-radius: 4;
+}
+
+.menu-item .label {
+    -fx-text-fill: white;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes pulse {
+    0% { -fx-opacity: 1; }
+    50% { -fx-opacity: 0.7; }
+    100% { -fx-opacity: 1; }
+}
+
+.pulse-animation {
+    -fx-animation: pulse 1s infinite;
+}
+
+/* ===== TRANSITIONS ===== */
+.button, .menu-item, .choice-box {
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+/* ===== FOCUS EFFECTS ===== */
+.text-area:focused, .choice-box:focused {
+    -fx-effect: dropshadow(gaussian, rgba(52,152,219,0.3), 15, 0, 0, 0);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1024px) {
+    .toolbar-button {
+        -fx-padding: 6 10;
+        -fx-font-size: 12px;
+    }
+
+    .code-editor {
+        -fx-font-size: 12px;
+    }
+}

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.collections.FXCollections?>
+
+<?import java.lang.String?>
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.javafx.Controller.MainController"
+            stylesheets="@modern-style.css"
+            prefHeight="700" prefWidth="1200">
+
+    <!-- TOP - Header with Logo and Title -->
+    <top>
+        <VBox alignment="CENTER" spacing="10" style="-fx-background-color: linear-gradient(to right, #2c3e50, #4a6491);">
+            <HBox alignment="CENTER" spacing="15">
+                <StackPane>
+                    <Circle radius="25" fill="white" />
+                    <Text text="⇄" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-fill: #2c3e50;" />
+                </StackPane>
+                <VBox spacing="5">
+                    <Label text="XML ⇄ JSON Converter Pro" style="-fx-text-fill: white; -fx-font-size: 28; -fx-font-weight: bold;">
+                        <font>
+                            <Font name="Segoe UI" size="28" />
+                        </font>
+                    </Label>
+                    <Label text="Advanced File Conversion Tool" style="-fx-text-fill: #ecf0f1; -fx-font-size: 14;" />
+                </VBox>
+            </HBox>
+
+            <!-- Modern ToolBar -->
+            <ToolBar prefHeight="45" style="-fx-background-color: rgba(255,255,255,0.1); -fx-border-color: rgba(255,255,255,0.2); -fx-border-width: 0 0 1 0;">
+                <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 0 20;">
+                    <!-- File Operations -->
+                    <Button text="📂 Open JSON" onAction="#openJSONFile" styleClass="toolbar-button primary" />
+                    <Button text="📂 Open XML" onAction="#openXMLFile" styleClass="toolbar-button primary" />
+                    <Separator orientation="VERTICAL" style="-fx-padding: 0 10;" />
+
+                    <!-- Convert Operations -->
+                    <Button text="🔄 JSON → XML" onAction="#convertToXML" styleClass="toolbar-button convert" />
+                    <Button text="🔄 XML → JSON" onAction="#convertToJSON" styleClass="toolbar-button convert" />
+                    <Separator orientation="VERTICAL" style="-fx-padding: 0 10;" />
+
+
+                    <!-- Additional Tools -->
+                    <Button text="🗑️ Clear All" onAction="#closeAll" styleClass="toolbar-button danger" />
+                </HBox>
+            </ToolBar>
+        </VBox>
+    </top>
+
+    <!-- CENTER - Main Content Area -->
+    <center>
+        <GridPane hgap="20" vgap="15" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="20" right="25" bottom="20" left="25" />
+            </padding>
+
+            <columnConstraints>
+                <ColumnConstraints hgrow="ALWAYS" percentWidth="50" />
+                <ColumnConstraints hgrow="ALWAYS" percentWidth="50" />
+            </columnConstraints>
+
+            <!-- JSON Panel -->
+            <VBox spacing="10" GridPane.columnIndex="0">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <StackPane>
+                        <Rectangle width="20" height="20" arcWidth="5" arcHeight="5" fill="#e74c3c" />
+                        <Text text="J" style="-fx-font-weight: bold; -fx-fill: white; -fx-font-size: 12;" />
+                    </StackPane>
+                    <Label text="JSON Content" style="-fx-text-fill: #e74c3c; -fx-font-weight: bold; -fx-font-size: 16;" />
+                    <HBox spacing="5" HBox.hgrow="ALWAYS" alignment="CENTER_RIGHT">
+                        <Label fx:id="jsonCharCount" text="0 chars" styleClass="char-count" />
+                        <Label fx:id="jsonLineCount" text="0 lines" styleClass="line-count" />
+                    </HBox>
+                </HBox>
+
+                <TextArea fx:id="jsonText"
+                          wrapText="true"
+                          promptText="JSON content will appear here..."
+                          editable="false"
+                          styleClass="code-editor json-editor">
+                </TextArea>
+
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Button text="Clear" onAction="#clearJSON"  styleClass="small-button danger" />
+                </HBox>
+            </VBox>
+
+            <!-- XML Panel -->
+            <VBox spacing="10" GridPane.columnIndex="1">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <StackPane>
+                        <Rectangle width="20" height="20" arcWidth="5" arcHeight="5" fill="#3498db" />
+                        <Text text="X" style="-fx-font-weight: bold; -fx-fill: white; -fx-font-size: 12;" />
+                    </StackPane>
+                    <Label text="XML Content" style="-fx-text-fill: #3498db; -fx-font-weight: bold; -fx-font-size: 16;" />
+                    <HBox spacing="5" HBox.hgrow="ALWAYS" alignment="CENTER_RIGHT">
+                        <Label fx:id="xmlCharCount" text="0 chars" styleClass="char-count" />
+                        <Label fx:id="xmlLineCount" text="0 lines" styleClass="line-count" />
+                    </HBox>
+                </HBox>
+
+                <TextArea fx:id="xmlText"
+                          wrapText="true"
+                          promptText="XML content will appear here..."
+                          styleClass="code-editor xml-editor"
+                            editable="false">
+                </TextArea>
+
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Button text="Clear" onAction="#clearXML" styleClass="small-button danger" />
+                </HBox>
+            </VBox>
+        </GridPane>
+    </center>
+
+    <!-- BOTTOM - Status Bar and Progress -->
+    <bottom>
+        <VBox spacing="5" style="-fx-background-color: #2c3e50; -fx-padding: 10;">
+            <!-- Progress Bar -->
+            <ProgressBar fx:id="progressBar"
+                         progress="0"
+                         prefHeight="6"
+                         style="-fx-accent: #1abc9c; -fx-padding: 0 0 5 0;" />
+
+            <!-- Status Bar -->
+            <HBox spacing="20" alignment="CENTER">
+                <Label fx:id="statusLabel" text="Ready" style="-fx-text-fill: white; -fx-font-size: 13;" />
+                <Region HBox.hgrow="ALWAYS" />
+                <HBox spacing="15" alignment="CENTER_RIGHT">
+                    <Label text="Encoding:" style="-fx-text-fill: #bdc3c7;" />
+                    <ChoiceBox fx:id="encodingChoice" prefWidth="120">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="UTF-8" />
+                                <String fx:value="UTF-16" />
+                                <String fx:value="ISO-8859-1" />
+                                <String fx:value="Windows-1252" />
+                            </FXCollections>
+                        </items>
+                    </ChoiceBox>
+                    <Separator orientation="VERTICAL" style="-fx-padding: 0 5;" />
+                    <Button text="⚙️ Settings"  styleClass="icon-button" />
+                    <Button text="❓ Help"  styleClass="icon-button" />
+                    <Button text="🚪 Exit" onAction="#exitApplication" styleClass="icon-button danger" />
+                </HBox>
+            </HBox>
+        </VBox>
+    </bottom>
+</BorderPane>

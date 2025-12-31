@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+
+<Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="400" minWidth="1000" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.Controller.MainController">
+   <children>
+      <SplitPane layoutX="332.0" layoutY="76.0" prefHeight="466.0" prefWidth="332.0">
+         <items>
+            <TextArea fx:id="xmlText" editable="false" prefHeight="421.0" prefWidth="397.0" />
+         </items>
+      </SplitPane>
+      <SplitPane layoutY="76.0" prefHeight="466.0" prefWidth="332.0">
+         <items>
+            <TextArea editable="false" prefHeight="395.0" prefWidth="330.0" fx:id="jsonText" />
+         </items>
+      </SplitPane>
+      <MenuBar layoutX="2.0" prefHeight="38.0" prefWidth="661.0">
+        <menus>
+            <Menu text="File">
+                <items>
+                    <MenuItem onAction="#openJSONFile" text="Open JSON File" />
+
+                    <MenuItem onAction="#openXMLFile" text="Open XML File" />
+                    <MenuItem onAction="#closeAll" text="Close Folder" />
+                </items>
+            </Menu>
+
+            <Menu mnemonicParsing="false" text="Convert">
+                <items>
+                    <MenuItem onAction="#convertToJSON" text="Convert To JSON" />
+                    <MenuItem onAction="#convertToXML" text="Convert To XML" />
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Exit"  >
+                <MenuItem text="Exit App" onAction="#exitApplication"/>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <TextFlow layoutX="1.0" layoutY="38.0" prefHeight="38.0" prefWidth="330.0" />
+      <TextFlow layoutX="329.0" layoutY="38.0" prefHeight="38.0" prefWidth="330.0" />
+      <TextField layoutX="2.0" layoutY="38.0" prefHeight="38.0" prefWidth="332.0" text="JSON Text" />
+      <TextField layoutX="332.0" layoutY="38.0" prefHeight="38.0" prefWidth="332.0" text="XML Text" />
+   </children>
+</Pane>
